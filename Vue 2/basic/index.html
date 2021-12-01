@@ -10,6 +10,7 @@
     <div id="app">
         <h1 v-once>{{ name.toUpperCase() }}</h1>
         <h1 v-once>{{ getname() }}</h1>
+        <h1 v-once>{{ ubahNama("Harun") }}</h1>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
@@ -24,6 +25,10 @@
         methods: {
             getname: function(){
                 return "Hello, "+this.name;
+            },
+            ubahNama: function(namaBaru){
+                this.name = namaBaru;
+                return "Nama Baru Kamu : "+namaBaru;
             }
         }
     });
