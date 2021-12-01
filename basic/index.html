@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Vue</title>
+</head>
+<body>
+    <div id="app">
+        {{ member.message }}
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    const member = {
+        name: 'Doremi Fasolasido',
+        message: "Hello Word"
+    }
+
+    const vm = new Vue({
+        el:'#app',
+        data: member
+    });
+</script>
+</body>
+</html>
