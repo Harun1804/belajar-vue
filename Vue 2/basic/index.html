@@ -9,17 +9,23 @@
 <body>
     <div id="app">
         <h1 v-once>{{ name.toUpperCase() }}</h1>
+        <h1 v-once>{{ getname() }}</h1>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
     const member = {
         name: 'Doremi Fasolasido',
         message: "Hello Word"
-    }
+    };
 
     const vm = new Vue({
         el:'#app',
-        data: member
+        data: member,
+        methods: {
+            getname: function(){
+                return "Hello, "+this.name;
+            }
+        }
     });
 </script>
 </body>
