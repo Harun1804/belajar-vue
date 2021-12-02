@@ -11,12 +11,14 @@
         <h1 v-once>{{ name.toUpperCase() }}</h1>
         <h1 v-once>{{ getname() }}</h1>
         <h1 v-once>{{ ubahNama("Harun") }}</h1>
+        <h1 v-once>{{ totalBayar }}</h1>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
     const member = {
         name: 'Doremi Fasolasido',
-        message: "Hello Word"
+        message: "Hello Word",
+        qty:1
     };
 
     const vm = new Vue({
@@ -29,6 +31,11 @@
             ubahNama: function(namaBaru){
                 this.name = namaBaru;
                 return this.getname();
+            }
+        },
+        computed:{
+            totalBayar: function(){
+                return this.qty * 10000
             }
         }
     });
