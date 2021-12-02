@@ -12,13 +12,16 @@
         <h1 v-once>{{ getname() }}</h1>
         <h1 v-once>{{ ubahNama("Harun") }}</h1>
         <h1 v-once>{{ totalBayar }}</h1>
+        <h1>{{ bilangan }}</h1>
+        <p>Bilangan ini adalah bilangan {{ cariBilangan }}</p>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
     const member = {
         name: 'Doremi Fasolasido',
         message: "Hello Word",
-        qty:1
+        qty:1,
+        bilangan : 4
     };
 
     const vm = new Vue({
@@ -36,6 +39,9 @@
         computed:{
             totalBayar: function(){
                 return this.qty * 10000
+            },
+            cariBilangan:function(){
+                return this.bilangan % 2 === 0 ? "Genap" : "Ganjil";
             }
         }
     });
