@@ -9,6 +9,8 @@
 <body>
     <div id="app">
         <h1 v-once>{{ name.toUpperCase() }}</h1>
+        <h1 v-text="message"></h1>
+        <h1 v-html="link"></h1>
         <h1 v-once>{{ getname() }}</h1>
         <h1 v-once>{{ ubahNama("Harun") }}</h1>
         <h1 v-once>{{ totalBayar }}</h1>
@@ -21,7 +23,8 @@
         name: 'Doremi Fasolasido',
         message: "Hello Word",
         qty:1,
-        bilangan : 4
+        bilangan : 4,
+        link:'<a href="index.html">Kelas Intelligo</a>'
     };
 
     const vm = new Vue({
