@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan Vue</title>
+    <style>
+        .active {
+            background: salmon;
+            padding: 5px;
+            border: 0px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -19,6 +26,10 @@
         <img v-bind:src="gambar" width="500">
         <img :src="gambar" width="500">
         <button v-on:click="tekanBilangan">Tekan</button>
+        <br>
+        <button v-bind:class="{active:menu == 'home'}" v-on:click="ubahMenu('home')">Home</button>
+        <button v-bind:class="{active:menu == 'about'}" v-on:click="ubahMenu('about')">About</button>
+        <button v-bind:class="{active:menu == 'blog'}" v-on:click="ubahMenu('blog')">Blog</button>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
@@ -28,7 +39,8 @@
         qty:1,
         bilangan : 1,
         link:'<a href="index.html">Kelas Intelligo</a>',
-        gambar:'img/vongola.jpeg'
+        gambar:'img/vongola.jpeg',
+        menu:'home'
     };
 
     const vm = new Vue({
@@ -45,6 +57,9 @@
             tekanBilangan: function(){
                 this.bilangan++;
                 this.cariBilangan === "Genap" ? this.gambar ="img/kyoya.jpeg" : this.gambar="img/vongola.jpeg"
+            },
+            ubahMenu: function(menu){
+                this.menu = menu
             }
         },
         computed:{
