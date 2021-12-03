@@ -18,6 +18,7 @@
         <p>Bilangan ini adalah bilangan {{ cariBilangan }}</p>
         <img v-bind:src="gambar" width="500">
         <img :src="gambar" width="500">
+        <button v-on:click="tekanBilangan">Tekan</button>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
@@ -25,7 +26,7 @@
         name: 'Doremi Fasolasido',
         message: "Hello Word",
         qty:1,
-        bilangan : 4,
+        bilangan : 1,
         link:'<a href="index.html">Kelas Intelligo</a>',
         gambar:'img/vongola.jpeg'
     };
@@ -40,6 +41,10 @@
             ubahNama: function(namaBaru){
                 this.name = namaBaru;
                 return this.getname();
+            },
+            tekanBilangan: function(){
+                this.bilangan++;
+                this.cariBilangan === "Genap" ? this.gambar ="img/kyoya.jpeg" : this.gambar="img/vongola.jpeg"
             }
         },
         computed:{
