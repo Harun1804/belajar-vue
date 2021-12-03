@@ -16,6 +16,8 @@
         <h1 v-once>{{ totalBayar }}</h1>
         <h1>{{ bilangan }}</h1>
         <p>Bilangan ini adalah bilangan {{ cariBilangan }}</p>
+        <img v-bind:src="gambar" width="500">
+        <img :src="gambar" width="500">
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
@@ -24,7 +26,8 @@
         message: "Hello Word",
         qty:1,
         bilangan : 4,
-        link:'<a href="index.html">Kelas Intelligo</a>'
+        link:'<a href="index.html">Kelas Intelligo</a>',
+        gambar:'img/vongola.jpeg'
     };
 
     const vm = new Vue({
