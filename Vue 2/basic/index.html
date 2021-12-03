@@ -18,7 +18,14 @@
         <h1 v-once>{{ name.toUpperCase() }}</h1>
         <h1 v-text="message"></h1>
         <h1 v-html="link"></h1>
-        <h1 v-once>{{ getname() }}</h1>
+        <h1>{{ getname() }}</h1>
+        <input type="text" v-model="name">
+        <div>
+            <input type="checkbox" value="vue" v-model="kelas">Vue
+            <input type="checkbox" value="react" v-model="kelas">React
+            <input type="checkbox" value="angular" v-model="kelas">Angular
+        </div>
+        <p>{{ kelas }}</p>
         <h1 v-once>{{ ubahNama("Harun") }}</h1>
         <h1 v-once>{{ totalBayar }}</h1>
         <h1>{{ bilangan }}</h1>
@@ -30,6 +37,7 @@
         <button v-bind:class="{active:menu == 'home'}" v-on:click="ubahMenu('home')">Home</button>
         <button v-bind:class="{active:menu == 'about'}" v-on:click="ubahMenu('about')">About</button>
         <button v-bind:class="{active:menu == 'blog'}" v-on:click="ubahMenu('blog')">Blog</button>
+        <br>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
@@ -40,7 +48,8 @@
         bilangan : 1,
         link:'<a href="index.html">Kelas Intelligo</a>',
         gambar:'img/vongola.jpeg',
-        menu:'home'
+        menu:'home',
+        kelas:[]
     };
 
     const vm = new Vue({
