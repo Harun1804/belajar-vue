@@ -25,7 +25,9 @@
             <input type="checkbox" value="react" v-model="kelas">React
             <input type="checkbox" value="angular" v-model="kelas">Angular
         </div>
-        <p>{{ kelas }}</p>
+        <ul>
+            <li v-for="k of kelas" v-text="k"></li>
+        </ul>
         <h1 v-once>{{ ubahNama("Harun") }}</h1>
         <h1 v-once>{{ totalBayar }}</h1>
         <h1>{{ bilangan }}</h1>
@@ -49,7 +51,7 @@
         link:'<a href="index.html">Kelas Intelligo</a>',
         gambar:'img/vongola.jpeg',
         menu:'home',
-        kelas:[]
+        kelas:['Golang','PHP','Python']
     };
 
     const vm = new Vue({
