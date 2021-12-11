@@ -26,10 +26,13 @@
             <input type="checkbox" value="angular" v-model="kelas">Angular
         </div>
         <h3>Daftar Kelas {{ kelas.length }}</h3>
+        <ul v-show="kelas.length > 1">
+            <li v-for="(k,index) of kelas">{{ index+1 }} - {{ k }}</li>
+        </ul>
         <ul v-if="kelas.length > 1">
             <li v-for="(k,index) of kelas">{{ index+1 }} - {{ k }}</li>
         </ul>
-        <li velse>Kelas Belum Tersedia</li>
+        <li v-else>Kelas Belum Tersedia</li>
         <h3>Perulangan Sampe 5</h3>
         <ul>
             <li v-for="x in 5">{{ x }}</li>
