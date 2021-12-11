@@ -25,7 +25,8 @@
             <input type="checkbox" value="react" v-model="kelas">React
             <input type="checkbox" value="angular" v-model="kelas">Angular
         </div>
-        <ul>
+        <h3>Daftar Kelas {{ kelas.length }}</h3>
+        <ul v-if="kelas.length > 1">
             <li v-for="(k,index) of kelas">{{ index+1 }} - {{ k }}</li>
         </ul>
         <h3>Perulangan Sampe 5</h3>
