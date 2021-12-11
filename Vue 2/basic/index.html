@@ -29,6 +29,7 @@
         <ul v-if="kelas.length > 1">
             <li v-for="(k,index) of kelas">{{ index+1 }} - {{ k }}</li>
         </ul>
+        <li velse>Kelas Belum Tersedia</li>
         <h3>Perulangan Sampe 5</h3>
         <ul>
             <li v-for="x in 5">{{ x }}</li>
@@ -60,7 +61,7 @@
         link:'<a href="index.html">Kelas Intelligo</a>',
         gambar:'img/vongola.jpeg',
         menu:'home',
-        kelas:['Golang','PHP','Python'],
+        kelas:[],
         numbers : [1,2,3,4,5]
     };
 
