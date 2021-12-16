@@ -20,6 +20,8 @@
         <h1 v-html="link"></h1>
         <h1>{{ getname() }}</h1>
         <input type="text" v-model="name">
+        <h3>Form Submit</h3>
+        <input type="text" placeholder="Nama Kelas" v-on:keyup.enter="submit">
         <div>
             <input type="checkbox" value="vue" v-model="kelas">Vue
             <input type="checkbox" value="react" v-model="kelas">React
@@ -95,6 +97,11 @@
                 return numbers.filter(angka => {
                     return angka % 2 == 0;
                 });
+            },
+            submit:function(event) {
+                let text = event.target.value;
+                this.kelas.push(text);
+                event.target.value = "";
             }
         },
         computed:{
