@@ -54,9 +54,9 @@
         <img :src="gambar" width="500">
         <button v-on:click="tekanBilangan">Tekan</button>
         <br>
-        <a v-bind:class="{active:menu == 'home'}" href="#" v-on:click="ubahMenu('home',$event)">Home</a>
-        <a v-bind:class="{active:menu == 'about'}" href="#" v-on:click="ubahMenu('about',$event)">About</a>
-        <a v-bind:class="{active:menu == 'blog'}" href="#" v-on:click="ubahMenu('blog',$event)">Blog</a>
+        <a v-bind:class="{active:menu == 'home'}" href="#" v-on:click.prevent="ubahMenu('home')">Home</a>
+        <a v-bind:class="{active:menu == 'about'}" href="#" v-on:click.prevent="ubahMenu('about')">About</a>
+        <a v-bind:class="{active:menu == 'blog'}" href="#" v-on:click.prevent="ubahMenu('blog')">Blog</a>
         <br>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -88,8 +88,7 @@
                 this.bilangan++;
                 this.cariBilangan === "Genap" ? this.gambar ="img/kyoya.jpeg" : this.gambar="img/vongola.jpeg"
             },
-            ubahMenu: function(menu,event){
-                event.preventDefault();
+            ubahMenu: function(menu){
                 this.menu = menu;
             },
             cariBilanganGenap:(numbers) => {
