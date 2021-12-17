@@ -15,18 +15,20 @@
 </head>
 <body>
     <div id="app">
-        <header-component></header-component>
+        <header-component nama="StarLord" image="img/kyoya.jpeg"></header-component>
         <kelas-component></kelas-component>
         <footer-component></footer-component>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
     Vue.component('header-component',{
+        props:['nama','image'],
         template: `<header>
-            <img src="img/vongola.jpeg" alt="logo" width="80">
+            <img :src="image" alt="logo" width="80">
             <p>
                 The Progressive JavaScript Framework
             </p>
+            <h3>{{ nama }}</h3>
             <p>{{ pesan }}</p>
         </header>`,
         data: function(){
