@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Vue</title>
+    <style>
+        .active {
+            background: salmon;
+            padding: 5px;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header-component></header-component>
+        <main>
+            <h3>Tambah Kelas Baru</h3>
+            <input type="text" v-model="kelasBaru" v-on:keyup.enter="submit">
+            <h3>Daftar Kelas : {{ kelas.length }}</h3>
+            <ul v-if="kelas.length > 0">
+                <li v-for="k in kelas">{{ k }}</li>
+            </ul>
+            <ul v-else>
+                <li>Belum Ada kelas</li>
+            </ul>
+        </main>
+        <footer-component></footer-component>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    Vue.component('header-component',{
+        template: `<header>
+            <img src="img/vongola.jpeg" alt="logo" width="80">
+            <p>
+                The Progressive JavaScript Framework
+            </p>
+        </header>`
+    });
+
+    Vue.component('footer-component',{
+        template: `<footer id="footer">
+            <p>Copyright 2021</p>
+        </footer>`
+    });
+
+    const member = {
+        kelas:[],
+        kelasBaru:''
+    };
+
+    const vm = new Vue({
+        el:'#app',
+        data: member,
+        methods: {
+            submit : function(){
+                this.kelas.unshift(this.kelasBaru);
+                this.kelasBaru = "";
+            }
+        }
+    });
+</script>
+</body>
+</html>
