@@ -16,17 +16,7 @@
 <body>
     <div id="app">
         <header-component></header-component>
-        <main>
-            <h3>Tambah Kelas Baru</h3>
-            <input type="text" v-model="kelasBaru" v-on:keyup.enter="submit">
-            <h3>Daftar Kelas : {{ kelas.length }}</h3>
-            <ul v-if="kelas.length > 0">
-                <li v-for="k in kelas">{{ k }}</li>
-            </ul>
-            <ul v-else>
-                <li>Belum Ada kelas</li>
-            </ul>
-        </main>
+        <kelas-component></kelas-component>
         <footer-component></footer-component>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -46,26 +36,40 @@
         }
     });
 
-    Vue.component('footer-component',{
-        template: `<footer id="footer">
-            <p>Copyright 2021</p>
-        </footer>`
-    });
-
-    const member = {
-        kelas:[],
-        kelasBaru:''
-    };
-
-    const vm = new Vue({
-        el:'#app',
-        data: member,
+    Vue.component('kelas-component',{
+        template:`<main>
+            <h3>Tambah Kelas Baru</h3>
+            <input type="text" v-model="kelasBaru" v-on:keyup.enter="submit">
+            <h3>Daftar Kelas : {{ kelas.length }}</h3>
+            <ul v-if="kelas.length > 0">
+                <li v-for="k in kelas">{{ k }}</li>
+            </ul>
+            <ul v-else>
+                <li>Belum Ada kelas</li>
+            </ul>
+        </main>`,
+        data:function (){
+            return {
+                kelas:[],
+                kelasBaru:''
+            }
+        },
         methods: {
             submit : function(){
                 this.kelas.unshift(this.kelasBaru);
                 this.kelasBaru = "";
             }
         }
+    });
+
+    Vue.component('footer-component',{
+        template: `<footer id="footer">
+            <p>Copyright 2021</p>
+        </footer>`
+    });
+
+    const vm = new Vue({
+        el:'#app'
     });
 </script>
 </body>
