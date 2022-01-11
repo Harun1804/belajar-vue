@@ -16,7 +16,7 @@
 <body>
     <div id="app">
         <header-component nama="StarLord" image="img/kyoya.jpeg"></header-component>
-        <kelas-component v-bind:items="kelas" :input="kelasBaru"></kelas-component>
+        <kelas-component v-bind:items="kelas" :input="kelasBaru" v-on:hapuskelas="hapusKelas"></kelas-component>
         <footer-component></footer-component>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -45,7 +45,10 @@
             <input type="text" v-model="input" v-on:keyup.enter="submit">
             <h3>Daftar Kelas : {{ items.length }}</h3>
             <ul v-if="items.length > 0">
-                <li v-for="k in items">{{ k }}</li>
+                <li v-for="(item,index) in items">
+                    {{ index+1 }} - {{ item }}
+                    <a href='#' v-on:click.prevent="$emit('hapuskelas',index)">Hapus</a>
+                </li>
             </ul>
             <ul v-else>
                 <li>Belum Ada kelas</li>
@@ -73,6 +76,11 @@
         data: {
             kelas:[],
             kelasBaru:''
+        },
+        methods : {
+            hapusKelas:function(index){
+                this.kelas.splice(index,1);
+            }
         }
     });
 </script>
