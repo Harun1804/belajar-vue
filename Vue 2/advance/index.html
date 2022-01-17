@@ -17,7 +17,9 @@
     <div id="app">
         <header-component nama="StarLord" image="img/kyoya.jpeg"></header-component>
         <kelas-component v-bind:items="kelas" v-on:submitkelas="submitkelas" v-on:hapuskelas="hapusKelas"></kelas-component>
-        <footer-component></footer-component>
+        <footer-component>
+            <p>Copyright 2021</p>
+        </footer-component>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
@@ -61,7 +63,7 @@
 
     Vue.component('footer-component',{
         template: `<footer id="footer">
-            <p>Copyright 2021</p>
+            <slot></slot>
         </footer>`
     });
 
