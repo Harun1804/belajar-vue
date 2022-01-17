@@ -16,7 +16,7 @@
 <body>
     <div id="app">
         <header-component nama="StarLord" image="img/kyoya.jpeg"></header-component>
-        <kelas-component v-bind:items="kelas" :input="kelasBaru" v-on:hapuskelas="hapusKelas"></kelas-component>
+        <kelas-component v-bind:items="kelas" v-on:submitkelas="submitkelas" v-on:hapuskelas="hapusKelas"></kelas-component>
         <footer-component></footer-component>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -39,10 +39,10 @@
     });
 
     Vue.component('kelas-component',{
-        props : ['items','input'],
+        props : ['items'],
         template:`<main>
             <h3>Tambah Kelas Baru</h3>
-            <input type="text" v-model="input" v-on:keyup.enter="submit">
+            <input type="text" v-on:keyup.enter="$emit('submitkelas',$event)">
             <h3>Daftar Kelas : {{ items.length }}</h3>
             <ul v-if="items.length > 0">
                 <li v-for="(item,index) in items">
@@ -56,12 +56,6 @@
         </main>`,
         data: function(){
             return {}
-        },
-        methods: {
-            submit : function(){
-                this.items.unshift(this.input);
-                this.input = "";
-            }
         }
     });
 
@@ -75,11 +69,14 @@
         el:'#app',
         data: {
             kelas:[],
-            kelasBaru:''
         },
         methods : {
             hapusKelas:function(index){
                 this.kelas.splice(index,1);
+            },
+            submitkelas:function(event){
+                const text = event.target.value
+                this.kelas.unshift(text);
             }
         }
     });
